@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Forensics Blog | Zackery Monk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            color: #c0c0c0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #0a0a0a;
+            border-bottom: 1px solid #1a1a1a;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a9eff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #c0c0c0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4a9eff;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #808080;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            border-left: 4px solid #4a9eff;
+            padding-left: 1rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .blog-card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(74, 158, 255, 0.2);
+            border-color: #4a9eff;
+        }
+
+        .blog-date {
+            color: #4a9eff;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .blog-card p {
+            color: #909090;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #0a0a0a;
+            color: #4a9eff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            border: 1px solid #1a1a1a;
+        }
+
+        .about-section {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: #c0c0c0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #0a0a0a;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 4rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: #4a9eff;
+            text-decoration: none;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        .contact-links a:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ZACKERY MONK</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Zackery Monk</h1>
+        <p>Cybersecurity Professional | Digital Forensics & Incident Response</p>
+    </section>
+
+    <div class="container">
+        <section id="blog">
+            <h2 class="section-title">Latest Posts</h2>
+            <div class="blog-grid">
+                <div class="blog-card" onclick="window.location.href='blog-post-1.html'">
+                    <div class="blog-date">October 18, 2025</div>
+                    <h3>Starting My Journey: CompTIA Security+ and Digital Forensics</h3>
+                    <p>After graduating Cum Laude with my B.S. in Cybersecurity, I'm pursuing Security+, GCFE, and CHFI certifications. Here's my study plan and why I'm passionate about digital forensics.</p>
+                    <span class="tag">Security+</span>
+                    <span class="tag">Certification</span>
+                    <span class="tag">Study Plan</span>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-date">October 8, 2025</div>
+                    <h3>Mobile Device Forensics: iOS vs Android</h3>
+                    <p>Comparing forensic acquisition techniques, challenges, and tools for extracting evidence from iOS and Android devices in 2025.</p>
+                    <span class="tag">Mobile Forensics</span>
+                    <span class="tag">iOS</span>
+                    <span class="tag">Android</span>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-date">October 1, 2025</div>
+                    <h3>Timeline Analysis: Connecting the Dots</h3>
+                    <p>How to build comprehensive timelines from multiple data sources to reconstruct digital incidents and present findings effectively.</p>
+                    <span class="tag">Timeline Analysis</span>
+                    <span class="tag">Best Practices</span>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-date">September 24, 2025</div>
+                    <h3>Cloud Forensics Challenges in 2025</h3>
+                    <p>Examining the unique challenges of collecting and analyzing evidence from cloud environments and distributed systems.</p>
+                    <span class="tag">Cloud Forensics</span>
+                    <span class="tag">AWS</span>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-date">September 17, 2025</div>
+                    <h3>Automating Forensic Workflows with Python</h3>
+                    <p>Building custom scripts to automate repetitive forensic tasks, from log parsing to artifact extraction and reporting.</p>
+                    <span class="tag">Python</span>
+                    <span class="tag">Automation</span>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-date">September 10, 2025</div>
+                    <h3>Windows Event Log Analysis for Incident Response</h3>
+                    <p>Essential Windows event IDs every forensic analyst should know and how to correlate them for effective investigation.</p>
+                    <span class="tag">Windows</span>
+                    <span class="tag">Incident Response</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2 class="section-title">About Me</h2>
+            <p>Recent Cybersecurity graduate (B.S., Cum Laude, 3.81 GPA) from University of Phoenix with hands-on experience in ethical hacking, network defense, and risk management. I'm passionate about digital forensics, incident response, and helping organizations defend against cyber threats. With 5+ years of progressive leadership experience, I bring strong problem-solving skills and the ability to perform under pressure—essential qualities for effective cybersecurity work.</p>
+            
+            <p style="margin-top: 1rem;">This blog documents my journey in digital forensics and cybersecurity, sharing insights from projects, certifications, and hands-on learning as I pursue SOC Analyst and forensics analyst roles.</p>
+            
+            <h3 style="color: #ffffff; margin-top: 2rem; margin-bottom: 1rem;">Technical Skills</h3>
+            <div class="skills">
+                <span class="skill">Ethical Hacking</span>
+                <span class="skill">Penetration Testing</span>
+                <span class="skill">Incident Response</span>
+                <span class="skill">Network Defense</span>
+                <span class="skill">Risk Management</span>
+                <span class="skill">Wireshark</span>
+                <span class="skill">Metasploit</span>
+                <span class="skill">Nmap</span>
+                <span class="skill">Kali Linux</span>
+                <span class="skill">Parrot OS</span>
+                <span class="skill">Windows PowerShell</span>
+                <span class="skill">Python</span>
+                <span class="skill">Java</span>
+                <span class="skill">HTML</span>
+                <span class="skill">NIST Framework</span>
+                <span class="skill">MITRE ATT&CK</span>
+                <span class="skill">Network Analysis</span>
+                <span class="skill">Threat Detection</span>
+            </div>
+
+            <h3 style="color: #ffffff; margin-top: 2rem; margin-bottom: 1rem;">Education</h3>
+            <p><strong style="color: #fff;">Bachelor of Science in Cybersecurity</strong> - University of Phoenix<br>
+            Graduated October 2024 | Cum Laude | 3.81 GPA | Dean's List<br>
+            <span style="color: #909090; font-size: 0.95rem;">Coursework: Ethical Hacking series, Computer Network Defense series, Information Systems Governance</span></p>
+
+            <h3 style="color: #ffffff; margin-top: 2rem; margin-bottom: 1rem;">Certifications In Progress</h3>
+            <div class="skills">
+                <span class="skill">CompTIA Security+</span>
+                <span class="skill">GIAC Certified Forensic Examiner (GCFE)</span>
+                <span class="skill">Computer Hacking Forensic Investigator (CHFI)</span>
+            </div>
+
+            <h3 style="color: #ffffff; margin-top: 2rem; margin-bottom: 1rem;">Key Projects</h3>
+            <p style="margin-bottom: 0.5rem;">• Conducted penetration testing engagements using Kali Linux and Metasploit</p>
+            <p style="margin-bottom: 0.5rem;">• Implemented network defense solutions and security controls</p>
+            <p>• Created NIST-aligned security policies and risk management frameworks</p>
+
+            <h3 style="color: #ffffff; margin-top: 2rem; margin-bottom: 1rem;">Professional Experience</h3>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <p style="color: #fff; font-weight: bold; margin-bottom: 0.3rem;">Team Lead | Panera Bread, Denver, NC</p>
+                <p style="color: #4a9eff; font-size: 0.9rem; margin-bottom: 0.5rem;">January 2024 - Present</p>
+                <p style="margin-bottom: 0.3rem;">• Implemented workflow improvements increasing team productivity through systematic problem analysis</p>
+                <p style="margin-bottom: 0.3rem;">• Developed training programs for incident resolution and operational procedures</p>
+                <p>• Applied methodical problem-solving during high-pressure situations to maintain service quality</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p style="color: #fff; font-weight: bold; margin-bottom: 0.3rem;">Team Member | Panera Bread, Denver, NC</p>
+                <p style="color: #4a9eff; font-size: 0.9rem; margin-bottom: 0.5rem;">October 2023 - January 2024</p>
+                <p style="margin-bottom: 0.3rem;">• Maintained service standards through detailed monitoring and process adherence</p>
+                <p style="margin-bottom: 0.3rem;">• Established reporting protocols improving team coordination and response times</p>
+                <p>• Conducted regular audits and implemented procedures preventing service disruptions</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p style="color: #fff; font-weight: bold; margin-bottom: 0.3rem;">Caregiver | Cheeri Home, Rock Hill, SC</p>
+                <p style="color: #4a9eff; font-size: 0.9rem; margin-bottom: 0.5rem;">July 2021 - August 2023</p>
+                <p style="margin-bottom: 0.3rem;">• Maintained detailed compliance logs and reports for regulatory requirements</p>
+                <p style="margin-bottom: 0.3rem;">• Evaluated client safety needs and implemented appropriate protective measures</p>
+                <p>• Provided systematic responses during emergencies and critical incidents</p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p style="color: #fff; font-weight: bold; margin-bottom: 0.3rem;">Assembler | M&C Assemblies, Lincolnton, NC</p>
+                <p style="color: #4a9eff; font-size: 0.9rem; margin-bottom: 0.5rem;">September 2019 - September 2020</p>
+                <p style="margin-bottom: 0.3rem;">• Implemented testing procedures, reducing defect rates and improving product reliability</p>
+                <p>• Developed training methodologies reducing onboarding time and increasing efficiency</p>
+            </div>
+
+            <div>
+                <p style="color: #fff; font-weight: bold; margin-bottom: 0.3rem;">Installation Technician & Event Personnel | Springfree Trampolines, Charlotte, NC</p>
+                <p style="color: #4a9eff; font-size: 0.9rem; margin-bottom: 0.5rem;">September 2016 - September 2019</p>
+                <p style="margin-bottom: 0.3rem;">• Conducted site assessments identifying potential issues and developing mitigation strategies</p>
+                <p>• Diagnosed and resolved complex technical issues using systematic analytical approaches</p>
+            </div>
+        </section>
+    </div>
+
+    <footer id="contact">
+        <p>&copy; 2025 Zackery Monk. All rights reserved.</p>
+        <div class="contact-links">
+            <a href="mailto:zackmonk16@gmail.com">zackmonk16@gmail.com</a>
+            <a href="tel:803-810-7956">(803) 810-7956</a>
+            <a href="https://www.linkedin.com/in/zackery-monk-9a5b37223" target="_blank">LinkedIn</a>
+            <a href="https://github.com/empty-throne" target="_blank">GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>
